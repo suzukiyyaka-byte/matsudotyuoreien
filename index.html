@@ -88,25 +88,41 @@
   <!-- 自然 of 演出背景 Canvas -->
   <canvas id="nature-canvas"></canvas>
 
-  <!-- 高齢者向け：文字サイズ変更 & 電話お問合せクイックバー (画面上部に固定) -->
+  <!-- 高齢者向け：文字サイズ変更 & LINE共有 & 電話お問合せクイックバー (画面上部に固定) -->
   <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md border-b border-stone-200">
-    <div class="max-w-4xl mx-auto px-4 py-2 flex items-center justify-between gap-2">
+    <div class="max-w-4xl mx-auto px-2 sm:px-4 py-2 flex flex-col sm:flex-row items-center justify-between gap-2">
       <!-- 文字サイズ変更 -->
       <div class="flex items-center gap-1">
-        <span class="text-xs text-stone-500 font-bold mr-1 hidden sm:inline">文字の大きさ：</span>
-        <button onclick="changeTextSize('normal')" id="btn-size-normal" class="px-3 py-1 text-xs sm:text-sm font-bold border-2 border-emerald-800 bg-emerald-800 text-white rounded-full transition-colors">
+        <span class="text-xs text-stone-500 font-bold mr-1 hidden md:inline">文字の大きさ：</span>
+        <button onclick="changeTextSize('normal')" id="btn-size-normal" class="px-2.5 py-1 text-xs sm:text-sm font-bold border-2 border-emerald-800 bg-emerald-800 text-white rounded-full transition-colors">
           標準
         </button>
-        <button onclick="changeTextSize('large')" id="btn-size-large" class="px-3 py-1 text-xs sm:text-sm font-bold border-2 border-emerald-800 text-emerald-800 hover:bg-emerald-50 rounded-full transition-colors">
+        <button onclick="changeTextSize('large')" id="btn-size-large" class="px-2.5 py-1 text-xs sm:text-sm font-bold border-2 border-emerald-800 text-emerald-800 hover:bg-emerald-50 rounded-full transition-colors">
           大きく
         </button>
       </div>
 
-      <!-- 電話ボタンを右側に設置 -->
-      <a href="tel:047-345-2212" class="flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white px-4 py-1.5 rounded-full shadow-md text-xs sm:text-sm font-bold transition-all transform active:scale-95">
-        <i data-lucide="phone" class="w-4 h-4 animate-bounce"></i>
-        <span>電話する</span>
-      </a>
+      <!-- 右側のボタングループ (LINE & 電話) -->
+      <div class="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto justify-end">
+        <!-- LINEで送るボタン -->
+        <a href="https://line.me/R/msg/text/?【公式】松戸中央霊園 - 家族の思い出が集う、やすらぎの聖地。%0D%0Ahttps://suzukiyyaka-byte.github.io/matsudotyuoreien/" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="flex items-center gap-1.5 bg-[#06C755] hover:bg-[#05b04b] text-white px-3 py-1.5 rounded-full shadow-md text-xs sm:text-sm font-bold transition-all transform active:scale-95">
+          <!-- LINE風吹き出しアイコン (SVG) -->
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M24 10.304c0-5.228-5.383-9.484-12-9.484s-12 4.256-12 9.484c0 4.69 3.993 8.62 9.387 9.339.366.079.864.244.989.558.113.284.074.729.036 1.017-.156.917-.468 3.65-.536 4.19-.08.636.216.58.455.39.238-.19 3.827-2.617 5.426-3.834l.024-.018c4.35-.118 8.214-4.148 8.214-8.652z"/>
+          </svg>
+          <span class="hidden xs:inline sm:hidden md:inline">LINEで家族に送る</span>
+          <span class="inline xs:hidden sm:inline md:hidden">LINEで送る</span>
+        </a>
+
+        <!-- 電話ボタン -->
+        <a href="tel:047-345-2212" class="flex items-center gap-1.5 bg-amber-600 hover:bg-amber-700 text-white px-3.5 py-1.5 rounded-full shadow-md text-xs sm:text-sm font-bold transition-all transform active:scale-95">
+          <i data-lucide="phone" class="w-4 h-4 animate-bounce"></i>
+          <span>電話する</span>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -483,6 +499,28 @@
           松戸中央霊園管理事務所では、改葬に関するご相談を年中無休、無料で随時承っております。お気軽に何でもお尋ねください。
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- 天気予報案内 (ウェザーニュース) -->
+  <section class="py-10 px-4 max-w-4xl mx-auto fade-in-section">
+    <div class="bg-emerald-50/80 rounded-2xl p-6 sm:p-8 border border-emerald-200 shadow-md text-center flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-4 text-left">
+        <div class="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center shrink-0 shadow-md">
+          <i data-lucide="cloud-sun" class="w-7 h-7"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-emerald-950 text-base sm:text-lg">お参り・ご見学前の天気確認に</h4>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">松戸市のピンポイント天気予報（ウェザーニュース）を事前にご確認いただけます。</p>
+        </div>
+      </div>
+      <a href="https://weathernews.jp/onebox/tenki/chiba/12207/" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="w-full sm:w-auto px-6 py-3.5 bg-emerald-800 hover:bg-emerald-900 text-white rounded-full font-bold text-xs sm:text-sm shadow-md transition-transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 shrink-0">
+        <i data-lucide="external-link" class="w-4 h-4"></i>
+        <span>松戸市の天気を調べる (ウェザーニュース)</span>
+      </a>
     </div>
   </section>
 
